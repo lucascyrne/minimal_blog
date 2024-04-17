@@ -1,0 +1,34 @@
+<h1 class="text-3xl text-left font-bold my-8 mb-4">Sign Up</h1>
+
+<%= form_with(model: @user, local: true, class: "max-w-lg mx-auto bg-white p-8 border border-gray-300 rounded shadow-lg p-4") do |form| %>
+  <% if @user.errors.any? %>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+      <strong class="font-bold">Erros:</strong>
+      <span class="block sm:inline">Por favor, corrija os seguintes erros e tente novamente.</span>
+      <ul class="list-disc list-inside">
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.email_field :email, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <%= form.submit "Sign Up", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer focus:outline-none focus:shadow-outline" %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<!-- app/views/posts/show.html.erb -->
+<div class="max-w-4xl mx-auto px-4 my-4">
+  <% if @post.image.attached? %>
+    <img src="<%= url_for(@post.image) %>" class="mx-auto">
+  <% end %>
+  <h1 class="text-center text-3xl font-bold my-4"><%= @post.title %></h1>
+  <p class="text-lg mb-4"><%= custom_simple_format(@post.content) %></p>
+  <div class="flex justify-center gap-4 mt-4">
+   
+      <div class="flex justify-center gap-4 mt-4">
+        <% if current_user&.role === 'admin' %>
+          <%= link_to 'Editar', edit_post_path(@post), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" %>
+          <%= button_to 'Deletar', post_path(@post), method: :delete, data: { confirm: 'Você tem certeza?' }, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer" %>
+        <% end %>
+        <%= link_to 'Voltar', posts_path, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
+      </div>
+  </div>
+</div>

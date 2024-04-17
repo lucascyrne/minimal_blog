@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oh, you found it...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= javascript_importmap_tags %>
+  <link rel="stylesheet" href="/stylesheets/application.css" data-turbo-track="reload">
+</head>
+<body>
+  <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
+    <h1 class="text-lg">A developer's diary</h1>
+    <div class="flex items-center gap-4">
+      <% if current_user&.role === 'admin' %>
+        <%= link_to 'Criar Novo Post', new_post_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+      <% end %>
+      <% if current_user %>
+        <%= button_to 'Logout', logout_path, method: :delete, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+      <% elsif !current_user && !@on_login_page %>
+        <%= button_to 'Login', login_path, method: :get, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
+      <% elsif !current_user && @on_login_page %>
+        <%= button_to 'Página Inicial', root_path, method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+      <% end %>
+    </div>
+  </header>
+  <div class="p-4">
+    <%= yield %>
+  </div>
+</body>
+</html>

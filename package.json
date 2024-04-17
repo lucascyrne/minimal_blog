@@ -1,0 +1,23 @@
+{
+  "name": "blog_pessoal",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:css": "nodemon -e css --watch app/assets/stylesheets/**/*.css -x 'npx tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./public/stylesheets/application.css'",
+    "dev": "rails s"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "nodemon": "^3.1.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
+  }
+}
