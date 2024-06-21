@@ -1,5 +1,3 @@
-Claro! Aqui está um README mais detalhado para o seu projeto:
-
 ````markdown
 # Minimal Blog
 
